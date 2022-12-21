@@ -7,14 +7,18 @@ import { FPV as Fpv } from './components/FPV'
 import { Player } from './components/Player'
 import { Cubes } from './components/Cubes'
 import { TextureSelector } from './components/TextureSelector'
+import { Menu } from './components/Menu'
+import { useState } from 'react'
 
 function App() {
+  const [menuVisibility, setMenuVisibility] = useState(true)
+
   return (
     <>
-      <Canvas>
+      <Canvas onClick={() => setMenuVisibility(false)}>
         <Sky sunPosition={[100, 100, 20]}></Sky>
         <ambientLight intensity={0.5}></ambientLight>
-        <Fpv></Fpv>
+        <Fpv setPause={(val) => setMenuVisibility(val)}></Fpv>
         <Physics>
           <Ground></Ground>
           <Player></Player>
@@ -23,6 +27,9 @@ function App() {
       </Canvas>
       <TextureSelector></TextureSelector>
       <div className="pointer">+</div>
+      {
+        menuVisibility ? <Menu></Menu>: <></>
+      }
     </>
   )
 }

@@ -1,11 +1,11 @@
 import { useSphere } from "@react-three/cannon"
 import { useFrame, useThree } from "@react-three/fiber"
 import { useEffect, useRef } from "react"
-import { MathUtils, Vector3 } from "three"
+import { Vector3 } from "three"
 import { useKeyboard } from "../hooks/useKeyboard"
 
 const PLAYER_SPEED = 5
-const PLAYER_JUMP_FORCE = 2
+const PLAYER_JUMP_FORCE = 3
 
 export const Player = () => {
     const {
